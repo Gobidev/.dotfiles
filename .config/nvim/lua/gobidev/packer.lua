@@ -111,7 +111,7 @@ return packer.startup(function(use)
     use { 'jghauser/follow-md-links.nvim' }
 
     -- copilot
-    use 'github/copilot.vim'
+    -- use 'github/copilot.vim'
 
     -- Markdown preview
     use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }

@@ -77,11 +77,11 @@ require('lspconfig').texlab.setup(with_settings {
     texlab = {
         build = {
             args = {
-                '-xelatex', -- Build with xelatex
-                '-pdfxe', -- Build with xelatex
+                '-xelatex',                 -- Build with xelatex
+                '-pdfxe',                   -- Build with xelatex
                 '-interaction=nonstopmode', -- Ignore errors
-                '-synctex=1', -- Enable SyncTeX
-                '-pv', -- Open preview
+                '-synctex=1',               -- Enable SyncTeX
+                '-pv',                      -- Open preview
                 '%f',
             },
             onSave = true, -- Build on save
@@ -108,6 +108,7 @@ require('lspconfig').cssls.setup(default_no_formatter)
 require('lspconfig').html.setup(default_no_formatter)
 require('lspconfig').emmet_ls.setup(default_opts)
 require('lspconfig').jsonls.setup(default_no_formatter)
+require('lspconfig').typst_lsp.setup(default_opts)
 require('prettier').setup {
     bin = 'prettier',
     filetypes = {
