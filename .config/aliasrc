@@ -7,8 +7,14 @@ alias mv="mv -iv"                                   # ask before overwrite and v
 alias rm="rm -v"                                    # verbose output for rm
 alias ip="ip -c"                                    # enable colors for ip
 alias srm="shred -u -n 1"                           # shred and deallocate file
-# use exa instead of ls if installed
-command -v exa &> /dev/null && { alias l="exa -lahg --icons --octal-permissions" && alias ll="exa -lhg --icons --octal-permissions"; }
+# use eza/exa instead of ls if installed
+if command -v eza > /dev/null; then
+    alias l='eza -lahg --icons --octal-permissions --git'
+elif command -v exa > /dev/null; then
+    alias l='exa -lahg --icons --octal-permissions --git'
+else
+    alias l='ls -lAh --color=auto'
+fi
 
 # lf based on installed file manager (joshuto -> lf -> ranger)
 if command -v joshuto &> /dev/null; then function lf {
