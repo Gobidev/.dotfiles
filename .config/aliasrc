@@ -52,7 +52,8 @@ command -v wl-copy > /dev/null && { alias setclip="wl-copy" && alias getclip="wl
 
 # Quickly install custom keyboard layout
 us_de () {
-    sudo bash -c "$(curl -sSL https://raw.githubusercontent.com/RubixDev/HandyLinuxStuff/main/us_de_layout/install.sh)"
+    command -v gsettings >/dev/null && gsettings set org.gnome.desktop.input-sources show-all-sources true
+    # sudo bash -c "$(curl -sSL https://raw.githubusercontent.com/RubixDev/HandyLinuxStuff/main/us_de_layout/install.sh)"
 }
 
 # function to automatically update dotfiles
