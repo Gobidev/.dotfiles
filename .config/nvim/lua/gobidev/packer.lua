@@ -93,6 +93,10 @@ return packer.startup(function(use)
     use('williamboman/mason.nvim')
     use('williamboman/mason-lspconfig.nvim')
     use('jayp0521/mason-null-ls.nvim')
+    use {
+            'saecki/crates.nvim',
+            requires = { 'nvim-lua/plenary.nvim' },
+        }
     use {'kaarmu/typst.vim', ft = {'typst'}}
     use('RubixDev/mason-update-all')
     use {
