@@ -11,7 +11,7 @@ config.font_size = 10
 config.font_rules = {
     {
         intensity = 'Bold',
-        font = wezterm.font('JetBrains Mono', { weight = 'Bold' }),
+        font = wezterm.font('Fira Code', { weight = 'Bold' }),
     },
 }
 config.bold_brightens_ansi_colors = false
