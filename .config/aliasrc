@@ -209,7 +209,7 @@ code2pdf() {
 
 # Convert xournalpp file to pdf
 xconvert() {
-    xournalpp -p "$(basename "$1" .xopp)_x.pdf" "$1"
+    xournalpp -p "$(basename "$1" .xopp)_annotated.pdf" "$1"
 }
 
 # Convert all xopp files in current directory to pdf
