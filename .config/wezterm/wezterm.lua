@@ -16,6 +16,8 @@ config.font_rules = {
 }
 config.bold_brightens_ansi_colors = false
 
+config.warn_about_missing_glyphs = false
+
 config.window_padding = {
     left = 0,
     right = 0,
