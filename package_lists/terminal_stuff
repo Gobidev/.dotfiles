@@ -42,3 +42,4 @@ clang
 ventoy-bin
 p7zip
 autojump-rs
+python-lsp-server
