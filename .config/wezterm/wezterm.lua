@@ -83,6 +83,11 @@ config.keys = {
         action = act.AdjustPaneSize { 'Right', 5 },
     },
     {
+        key = 'w',
+        mods = 'CTRL',
+        action = wezterm.action.CloseCurrentPane { confirm = true },
+    },
+    {
         key = 'F11',
         action = wezterm.action.ToggleFullScreen,
     },
