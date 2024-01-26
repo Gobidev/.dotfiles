@@ -40,21 +40,12 @@ if command -v joshuto &> /dev/null; then function lf {
 command -v dunk > /dev/null && alias gdd="git diff | dunk | less -R"
 command -v diff-so-fancy > /dev/null && alias gd="git diff | diff-so-fancy | less -R"
 
-# ssh
-# if [[ -n $KITTY_WINDOW_ID ]]; then command -v kitty > /dev/null && alias ssh="kitty +kitten ssh"; fi
-
-# quickly sync git repo
-alias gsync="git pull && git add . && git commit -am 'Update' && git push"
-
 # clipboard aliases
 command -v xclip > /dev/null && { alias setclip="xclip -selection c" && alias getclip="xclip -selection c -o"; }
 command -v wl-copy > /dev/null && { alias setclip="wl-copy" && alias getclip="wl-paste"; }
 
-# Quickly install custom keyboard layout
-us_de () {
-    command -v gsettings >/dev/null && gsettings set org.gnome.desktop.input-sources show-all-sources true
-    # sudo bash -c "$(curl -sSL https://raw.githubusercontent.com/RubixDev/HandyLinuxStuff/main/us_de_layout/install.sh)"
-}
+# enable eurkey in gnome
+command -v gsettings >/dev/null && alias eurkey="gsettings set org.gnome.desktop.input-sources show-all-sources true"
 
 # function to automatically update dotfiles
 updaterc() {
@@ -102,7 +93,7 @@ upd() {
     # refresh gpg keyring
     gpg --list-keys &> /dev/null && {
         upd_announce Updating gpg keyring
-        gpg --keyserver keyserver.ubuntu.com --refresh-keys || return 1
+        timeout 20 gpg --keyserver keyserver.ubuntu.com --refresh-keys
         upd_announce done!
     }
 
@@ -138,7 +129,7 @@ upd() {
         cd "$ZSH"/custom/plugins || return 1
         for plugin in */; do
             if [ -d "$plugin/.git" ]; then
-                git -C "$plugin" pull
+                timeout 10 git -C "$plugin" pull
             fi
         done
         cd "$_upd_prev_path" || return 1
