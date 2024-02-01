@@ -7,6 +7,7 @@ PREVIEW_WIDTH="$4"		# Width of the preview pane (number of fitting characters)
 PREVIEW_HEIGHT="$5"		# Height of the preview pane (number of fitting characters)
 
 TMP_FILE="$(mktemp).jpg"
+TMP_FILE_XOURNAL="$(mktemp).png"
 
 mimetype=$(file --mime-type -Lb "$FILE_PATH")
 
@@ -36,6 +37,12 @@ case "$mimetype" in
             -jpeg -tiffcompression jpeg \
             -- "$FILE_PATH" "${TMP_FILE%.*}"
         kitty_show "$TMP_FILE"
+        ;;
+    application/gzip)
+        if [[ "$FILE_PATH" == *.xopp ]]; then
+            xournalpp --export-range=1 -i "$TMP_FILE_XOURNAL" "$FILE_PATH"
+            kitty_show "$TMP_FILE_XOURNAL"
+        fi
         ;;
 	*) kitty_clear ;;
 esac
