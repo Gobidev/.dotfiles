@@ -208,6 +208,9 @@ xconvertall() {
     for file in ./*.xopp; do xconvert "$file"; done
 }
 
+# combine pdfs
+alias mergepdf="qpdf --empty --pages *.pdf -- merged.pdf"
+
 # Compile and run c program
 crun() {
     gcc -g -DDEBUG -Wall -Wextra -pedantic -std=c17 -o "$(basename "$1" .c).out" "$1" && ./"$(basename "$1" .c).out"
