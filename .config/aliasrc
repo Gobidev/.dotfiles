@@ -209,7 +209,9 @@ xconvertall() {
 }
 
 # combine pdfs
-alias mergepdf="qpdf --empty --pages *.pdf -- merged.pdf"
+mergepdf() {
+    qpdf --empty --pages "$@" -- merged.pdf
+}
 
 # Compile and run c program
 crun() {
