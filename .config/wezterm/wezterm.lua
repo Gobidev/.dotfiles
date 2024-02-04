@@ -84,7 +84,7 @@ config.keys = {
     },
     {
         key = 'w',
-        mods = 'CTRL',
+        mods = 'ALT',
         action = wezterm.action.CloseCurrentPane { confirm = true },
     },
     {
