@@ -47,6 +47,9 @@ command -v wl-copy > /dev/null && { alias setclip="wl-copy" && alias getclip="wl
 # enable eurkey in gnome
 command -v gsettings >/dev/null && alias eurkey="gsettings set org.gnome.desktop.input-sources show-all-sources true"
 
+# use uv for pip stuff
+command -v uv >/dev/null && alias pip="uv pip"
+
 # function to automatically update dotfiles
 updaterc() {
     pwd="$(pwd)"
