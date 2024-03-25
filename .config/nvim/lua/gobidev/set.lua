@@ -76,4 +76,6 @@ vim.cmd([[
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+    " Handle all yaml files as ansible files, TODO match ansible specific keywords
+    au BufRead *.yaml,*.yml | set ft=yaml.ansible
 ]])
