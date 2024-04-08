@@ -113,6 +113,7 @@ return packer.startup(function(use)
         requires = { 'godlygeek/tabular' },
     }
     use { 'jghauser/follow-md-links.nvim' }
+    use { 'mrcjkb/haskell-tools.nvim'}
 
     -- copilot
     -- use 'github/copilot.vim'
