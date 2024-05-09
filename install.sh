@@ -116,5 +116,7 @@ install_file .config/nvim
 
 install_file .config/BetterDiscord/themes/nocturnal_gruvbox.theme.css
 
+install_file .local/share/Steam/steam_dev.cfg
+
 # install custom zsh theme
 install_file .oh-my-zsh/custom/themes/agnoster-custom.zsh-theme
