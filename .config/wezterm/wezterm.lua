@@ -3,7 +3,7 @@ local act = wezterm.action
 local config = {}
 
 config.enable_wayland = true
-config.front_end = "WebGpu"
+-- config.front_end = "WebGpu"
 
 config.color_scheme = 'GruvboxDark'
 config.hide_tab_bar_if_only_one_tab = true
