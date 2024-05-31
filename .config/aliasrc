@@ -87,9 +87,9 @@ upd() {
     }
 
     # update flatpaks
-    command -v flatpak $ > /dev/null && {
+    command -v flatpak &> /dev/null && {
         upd_announce Updating flatpaks
-        flatpak update || return 1
+        flatpak update -y || return 1
         upd_announce done!
     }
 
