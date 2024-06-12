@@ -95,7 +95,7 @@ local filename_component = {
 -- Taken from AstroNvim: https://github.com/AstroNvim/AstroNvim/blob/90592994b1794f5b88268b21bb63f367096b57cb/lua/core/status.lua#L60-L73
 local lsp_progress_component = {
     function()
-        local lsp = vim.lsp.util.get_progress_messages()[1]
+        local lsp = vim.lsp.status()[0]
         return lsp
                 and string.format(
                     ' %%<%s %s %s (%s%%%%) ',
