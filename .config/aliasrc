@@ -201,6 +201,15 @@ code2pdf() {
     rm "$(echo $1 | grep ".*\." --only-matching)md" > /dev/null
 }
 
+timer () {
+    seconds=$1
+    start="$(($(date +%s) + $seconds))"
+    while [ "$start" -ge `date +%s` ]; do
+        time="$(( $start - `date +%s` ))"
+        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+    done
+}
+
 # Convert xournalpp file to pdf
 xconvert() {
     xournalpp -p "$(basename "$1" .xopp)_annotated.pdf" "$1"
