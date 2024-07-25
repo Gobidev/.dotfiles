@@ -114,6 +114,8 @@ install_file .config/lf
 install_file .config/joshuto
 install_file .config/nvim
 
+install_file .config/spicetify/Themes
+
 install_file .config/BetterDiscord/themes/nocturnal_gruvbox.theme.css
 
 install_file .local/share/Steam/steam_dev.cfg
