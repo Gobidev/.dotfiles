@@ -58,7 +58,7 @@ require('lspconfig').rust_analyzer.setup(with_settings {
 })
 require('lspconfig').vimls.setup(default_opts)
 require('lspconfig').bashls.setup(default_opts)
-require('lspconfig').tsserver.setup(default_opts)
+require('lspconfig').ts_ls.setup(default_opts)
 require('lspconfig').lua_ls.setup(with_settings {
     Lua = {
         runtime = {

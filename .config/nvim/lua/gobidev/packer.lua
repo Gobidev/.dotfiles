@@ -114,9 +114,13 @@ return packer.startup(function(use)
     }
     use { 'jghauser/follow-md-links.nvim' }
     use { 'mrcjkb/haskell-tools.nvim'}
+    use {
+            'linrongbin16/lsp-progress.nvim',
+            config = function()
+                require('lsp-progress').setup()
+            end
+        }
 
-    -- copilot
-    -- use 'github/copilot.vim'
 
     -- Markdown preview
     use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
