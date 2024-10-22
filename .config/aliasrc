@@ -186,7 +186,7 @@ pwgen() {
 # shred and deallocate directory
 shreddir() {
     find "$@" -type f -exec shred -uv -n 1 --random-source=/dev/urandom {} \;
-    rm -rv "$@"
+    rm -rfv "$@"
 }
 
 # convert code file to pdf using pandoc
