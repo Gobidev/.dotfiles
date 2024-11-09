@@ -112,6 +112,7 @@ install_file .config/xournalpp/toolbar.ini
 
 install_file .config/lf
 install_file .config/joshuto
+install_file .config/yazi
 install_file .config/nvim
 
 install_file .config/spicetify/Themes
