@@ -43,10 +43,10 @@ ZSH_HIGHLIGHT_STYLES[assign]=fg=14
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 # Autojump
-#[[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
+[[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
 # Zoxide
 export _ZO_ECHO=1
-eval "$(zoxide init zsh)"
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
 # source aliasrc for aliases
 source ~/.config/aliasrc
