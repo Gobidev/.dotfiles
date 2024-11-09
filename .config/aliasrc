@@ -16,6 +16,15 @@ else
     alias l='ls -lAh --color=auto'
 fi
 
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # lf based on installed file manager (joshuto -> lf -> ranger)
 if command -v joshuto &> /dev/null; then function lf {
     local cmd_file code
