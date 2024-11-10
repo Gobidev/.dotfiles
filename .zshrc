@@ -46,7 +46,7 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 [[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
 # Zoxide
 export _ZO_ECHO=1
-command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh --cmd j)"
 
 # source aliasrc for aliases
 source ~/.config/aliasrc
