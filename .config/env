@@ -3,6 +3,8 @@
 # add .local/bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+if [ -d ~/go/bin ]; then export PATH="$PATH:$HOME/go/bin"; fi
+
 # always use all awailable cores for compiling
 procs="$(nproc)" # use variable due to shellcheck SC2155
 export MAKEFLAGS="-j$procs"
