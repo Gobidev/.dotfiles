@@ -24,7 +24,7 @@ git-cliff
 uv
 github-cli
 hyperfine
-joshuto
+yazi
 jq
 mc
 ncdu
@@ -42,5 +42,5 @@ unzip
 clang
 ventoy-bin
 p7zip
-autojump-rs
+zoxide
 python-lsp-server
