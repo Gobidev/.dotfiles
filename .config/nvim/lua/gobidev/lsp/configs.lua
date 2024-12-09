@@ -124,7 +124,7 @@ require('lspconfig').taplo.setup(default_opts)
 -- require('lspconfig').cssls.setup(default_no_formatter)
 require('lspconfig').html.setup(default_no_formatter)
 require('lspconfig').jsonls.setup(default_no_formatter)
-require('lspconfig').typst_lsp.setup(default_opts)
+require('lspconfig').tinymist.setup(default_opts)
 require('prettier').setup {
     bin = 'prettier',
     filetypes = {
