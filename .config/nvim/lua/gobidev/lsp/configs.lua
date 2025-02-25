@@ -72,7 +72,9 @@ require('lspconfig').lua_ls.setup(with_settings {
         },
     },
 })
-require('lspconfig').pylsp.setup(default_opts)
+-- require('lspconfig').pylsp.setup(default_opts)
+-- require('lspconfig').pylyzer.setup(default_opts)
+require('lspconfig').pyright.setup(default_opts)
 require('lspconfig').dockerls.setup(default_opts)
 require('lspconfig').ansiblels.setup(default_opts)
 require("lspconfig").golangci_lint_ls.setup(default_opts)
