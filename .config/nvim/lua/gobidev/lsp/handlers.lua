@@ -82,19 +82,19 @@ local function format()
             if disabled_formatter[client.name] then return false end
 
             -- Disable formatter of null-ls if formatting is provided by another LSP
-            if client.name ~= 'null-ls' then return true end
-            local clients = vim.lsp.buf_get_clients()
-            local has_other_formatter = false
-            for _, lsp in ipairs(clients) do
-                if
-                    lsp.name ~= 'null-ls'
-                    and lsp.server_capabilities.documentFormattingProvider
-                    and not disabled_formatter[lsp.name]
-                then
-                    has_other_formatter = true
-                end
-            end
-            if has_other_formatter then return false end
+            -- if client.name ~= 'null-ls' then return true end
+            -- local clients = vim.lsp.buf_get_clients()
+            -- local has_other_formatter = false
+            -- for _, lsp in ipairs(clients) do
+            --     if
+            --         lsp.name ~= 'null-ls'
+            --         and lsp.server_capabilities.documentFormattingProvider
+            --         and not disabled_formatter[lsp.name]
+            --     then
+            --         has_other_formatter = true
+            --     end
+            -- end
+            -- if has_other_formatter then return false end
             return true
         end,
     }

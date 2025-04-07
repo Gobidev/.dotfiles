@@ -32,8 +32,8 @@ require('mason').setup {
     },
 }
 require('mason-lspconfig').setup { automatic_installation = true }
-require('gobidev.lsp.null_ls')
-require('mason-null-ls').setup { automatic_installation = true }
+-- require('gobidev.lsp.null_ls')
+-- require('mason-null-ls').setup { automatic_installation = true }
 require('mason-update-all').setup()
 
 require('crates').setup {
@@ -127,28 +127,28 @@ require('lspconfig').taplo.setup(default_opts)
 require('lspconfig').html.setup(default_no_formatter)
 require('lspconfig').jsonls.setup(default_no_formatter)
 require('lspconfig').tinymist.setup(default_opts)
-require('prettier').setup {
-    bin = 'prettier',
-    filetypes = {
-        'css',
-        'scss',
-        'html',
-        'javascript',
-        'typescript',
-        'json',
-        'json5',
-        'svelte',
-    },
+-- require('prettier').setup {
+--     bin = 'prettier',
+--     filetypes = {
+--         'css',
+--         'scss',
+--         'html',
+--         'javascript',
+--         'typescript',
+--         'json',
+--         'json5',
+--         'svelte',
+--     },
 
     -- Do not restrict prettier to npm projects
-    ['null-ls'] = {
-        condition = function() return true end,
-    },
-
-    -- Default prettier settings
-    arrow_parens = 'avoid',
-    semi = false,
-    single_quote = true,
-    tab_width = 4,
-    trailing_comma = 'all',
-}
+--     ['null-ls'] = {
+--         condition = function() return true end,
+--     },
+--
+--     -- Default prettier settings
+--     arrow_parens = 'avoid',
+--     semi = false,
+--     single_quote = true,
+--     tab_width = 4,
+--     trailing_comma = 'all',
+-- }

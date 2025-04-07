@@ -92,21 +92,21 @@ return packer.startup(function(use)
     use('neovim/nvim-lspconfig') -- enable LSP
     use('williamboman/mason.nvim')
     use('williamboman/mason-lspconfig.nvim')
-    use('jayp0521/mason-null-ls.nvim')
+    -- use('jayp0521/mason-null-ls.nvim')
     use {
             'saecki/crates.nvim',
             requires = { 'nvim-lua/plenary.nvim' },
         }
     use {'kaarmu/typst.vim', ft = {'typst'}}
     use('RubixDev/mason-update-all')
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim',
-        },
-    }
+    -- use {
+    --     'jose-elias-alvarez/null-ls.nvim',
+    --     requires = {
+    --         'nvim-lua/plenary.nvim',
+    --     },
+    -- }
     use('ray-x/lsp_signature.nvim')
-    use('MunifTanjim/prettier.nvim')
+    -- use('MunifTanjim/prettier.nvim')
 
     use {
         'preservim/vim-markdown',
