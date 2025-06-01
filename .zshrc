@@ -2,7 +2,7 @@
 source ~/.config/env
 
 # launch bash when loaded inside virtme-ng virtual machine
-if [[ -v virtme_hostname ]]; then bash -c "sudo -s" && exit; fi
+if [[ -v virtme_hostname ]]; then bash -c "sudo -s && exit" && exit; fi
 
 # set zsh theme
 ZSH_THEME="agnoster-custom" # modified version of agnoster theme, source in dotfiles repo
