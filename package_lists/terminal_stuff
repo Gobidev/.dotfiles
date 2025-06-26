@@ -19,6 +19,7 @@ zsh
 bat
 dash
 diff-so-fancy
+git-delta
 dunk
 git-cliff
 uv
