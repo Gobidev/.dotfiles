@@ -47,7 +47,7 @@ f() {
 
 # git aliases
 command -v dunk > /dev/null && alias gdd="git diff | dunk | less -R"
-command -v diff-so-fancy > /dev/null && alias gd="git diff | diff-so-fancy | less -R"
+#command -v diff-so-fancy > /dev/null && alias gd="git diff | diff-so-fancy | less -R"
 
 # clipboard aliases
 command -v xclip > /dev/null && { alias setclip="xclip -selection c" && alias getclip="xclip -selection c -o"; }
@@ -58,6 +58,9 @@ command -v gsettings >/dev/null && alias eurkey="gsettings set org.gnome.desktop
 
 # use uv for pip stuff
 command -v uv >/dev/null && alias pip="uv pip"
+
+# helix
+command -v helix >/dev/null && alias hx="helix"
 
 # function to automatically update dotfiles
 updaterc() {
