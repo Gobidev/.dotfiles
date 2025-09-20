@@ -45,10 +45,10 @@ require('crates').setup {
             hide = { 'q', '<esc>', '<C-k>' },
         },
     },
-    null_ls = {
-        enabled = true,
-        name = 'crates.nvim',
-    },
+    -- null_ls = {
+    --     enabled = true,
+    --     name = 'crates.nvim',
+    -- },
 }
 
 require('lspconfig').rust_analyzer.setup(with_settings {
