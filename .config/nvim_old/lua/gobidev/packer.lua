@@ -73,17 +73,37 @@ return packer.startup(function(use)
     }
 
     -- cmp plugins
-    use('hrsh7th/nvim-cmp') -- The completion plugin
-    use('hrsh7th/cmp-buffer') -- buffer completions
-    use('hrsh7th/cmp-path') -- path completions
-    use('hrsh7th/cmp-cmdline') -- cmdline completions
+    use('hrsh7th/nvim-cmp')         -- The completion plugin
+    use('hrsh7th/cmp-buffer')       -- buffer completions
+    use('hrsh7th/cmp-path')         -- path completions
+    use('hrsh7th/cmp-cmdline')      -- cmdline completions
     use('saadparwaiz1/cmp_luasnip') -- snippet completions
     use('hrsh7th/cmp-nvim-lsp')
     use('hrsh7th/cmp-nvim-lua')
 
     -- snippets
-    use('L3MON4D3/LuaSnip') --snippet engine
+    use('L3MON4D3/LuaSnip')             --snippet engine
     use('rafamadriz/friendly-snippets') -- a bunch of snippets to use
+
+    use {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        requires = {
+            { "nvim-lua/plenary.nvim", branch = "master" }
+        },
+        run = "make tiktoken",
+        config = function()
+            require("CopilotChat").setup({
+                model = "claude-sonnet-4",       -- AI model to use
+                temperature = 0.1,       -- Lower = focused, higher = creative
+                window = {
+                    layout = "vertical", -- 'vertical', 'horizontal', 'float'
+                    width = 0.5,         -- 50% of screen width
+                },
+                auto_insert_mode = true, -- Enter insert mode when opening
+                -- Add any other options you'd like to customize here
+            })
+        end
+    }
 
     -- LSP
     use { 'ur4ltz/surround.nvim' }
@@ -94,10 +114,10 @@ return packer.startup(function(use)
     use('williamboman/mason-lspconfig.nvim')
     -- use('jayp0521/mason-null-ls.nvim')
     use {
-            'saecki/crates.nvim',
-            requires = { 'nvim-lua/plenary.nvim' },
-        }
-    use {'kaarmu/typst.vim', ft = {'typst'}}
+        'saecki/crates.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+    }
+    use { 'kaarmu/typst.vim', ft = { 'typst' } }
     use('RubixDev/mason-update-all')
     -- use {
     --     'jose-elias-alvarez/null-ls.nvim',
@@ -113,13 +133,13 @@ return packer.startup(function(use)
         requires = { 'godlygeek/tabular' },
     }
     use { 'jghauser/follow-md-links.nvim' }
-    use { 'mrcjkb/haskell-tools.nvim'}
+    -- use { 'mrcjkb/haskell-tools.nvim'}
     use {
-            'linrongbin16/lsp-progress.nvim',
-            config = function()
-                require('lsp-progress').setup()
-            end
-        }
+        'linrongbin16/lsp-progress.nvim',
+        config = function()
+            require('lsp-progress').setup()
+        end
+    }
 
 
     -- Markdown preview
