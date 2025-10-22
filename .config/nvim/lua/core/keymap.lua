@@ -19,11 +19,15 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Simple keybind to toggle Neo-tree
-vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', {
+vim.keymap.set('n', '<leader>e', '<Cmd>Neotree<CR>', {
   noremap = true,
   silent = true,
   desc = 'Toggle Neo-tree file explorer'
 })
+
+-- fzf-lua
+nnoremap('<leader>ff', '<Cmd>FzfLua files<CR>')
+nnoremap('<leader>fw', '<Cmd>FzfLua live_grep<CR>')
 
 -- centered jumping
 nnoremap('n', 'nzz')
@@ -59,7 +63,7 @@ nnoremap('<C-w>L', '<cmd>:bot vs<CR>')
 keymap('n', '<S-l>', ':bnext<CR>', opts)
 keymap('n', '<S-h>', ':bprevious<CR>', opts)
 
-vim.keymap.set('n', '<leader>', '<Cmd>b<CR>', {
+vim.keymap.set('n', '<leader>x', '<Cmd>bd<CR>', {
   noremap = true,
   silent = true,
   desc = 'Close current buffer'
