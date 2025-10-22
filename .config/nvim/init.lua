@@ -3,11 +3,12 @@ if vim.fn.has("nvim-0.12") == 0 then
     return
 end
 
--- require("core.options")
 require("core.plugins")
+require("core.colors")
+require("core.set")
+require("core.keymap")
+require("core.lualine")
 -- require("core.treesitter")
 -- require("core.lsp")
--- require("core.keymap")
-require("core.colors")
 -- require("core.snippets")
 -- require("core.statusline")
