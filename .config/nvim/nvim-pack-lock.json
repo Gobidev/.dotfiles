@@ -13,6 +13,10 @@
       "rev": "86361b9",
       "src": "https://github.com/saghen/blink.download"
     },
+    "blink.indent": {
+      "rev": "fcc03b8",
+      "src": "https://github.com/saghen/blink.indent"
+    },
     "blink.nvim": {
       "rev": "16a597e",
       "src": "https://github.com/Saghen/blink.nvim"
