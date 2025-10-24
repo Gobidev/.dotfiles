@@ -8,8 +8,14 @@ vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     -- mason
     "https://github.com/mason-org/mason.nvim",
+
+    -- blink
+    "https://github.com/saghen/blink.download",
     -- completion
-    "https://github.com/Saghen/blink.nvim",
+    { src = "https://github.com/saghen/blink.cmp", version = "v1.7.0" },
+    -- autopairs
+    { src = "https://github.com/saghen/blink.pairs", version = "v0.3.0" },
+
     -- snippets
     "https://github.com/L3MON4D3/LuaSnip",
     "https://github.com/rafamadriz/friendly-snippets",
@@ -37,3 +43,5 @@ require("nvim-treesitter").setup()
 require("nvim-surround").setup()
 require("luasnip").setup({ enable_autosnippets = true })
 require("neo-tree").setup({})
+require("blink.cmp").setup()
+require("blink.pairs").setup({})

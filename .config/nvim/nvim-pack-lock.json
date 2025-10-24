@@ -4,9 +4,23 @@
       "rev": "f958d98",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "blink.cmp": {
+      "rev": "327fff9",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'v1.7.0'"
+    },
+    "blink.download": {
+      "rev": "86361b9",
+      "src": "https://github.com/saghen/blink.download"
+    },
     "blink.nvim": {
       "rev": "16a597e",
       "src": "https://github.com/Saghen/blink.nvim"
+    },
+    "blink.pairs": {
+      "rev": "d8bf802",
+      "src": "https://github.com/saghen/blink.pairs",
+      "version": "'v0.3.0'"
     },
     "friendly-snippets": {
       "rev": "572f566",
