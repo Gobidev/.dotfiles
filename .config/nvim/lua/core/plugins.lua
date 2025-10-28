@@ -43,5 +43,7 @@ require("nvim-treesitter").setup()
 require("nvim-surround").setup()
 require("luasnip").setup({ enable_autosnippets = true })
 require("neo-tree").setup({})
-require("blink.cmp").setup()
+require("blink.cmp").setup({keymap = {
+  ["<Tab>"] = { "accept" },
+}})
 require("blink.pairs").setup({})
