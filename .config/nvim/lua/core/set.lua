@@ -39,3 +39,5 @@ vim.opt.colorcolumn = '120'
 
 -- disable mode display because it is handled by lualine
 vim.opt.showmode = false
+
+vim.cmd([[au BufRead *.yaml,*.yml | set ft=yaml.ansible]])
