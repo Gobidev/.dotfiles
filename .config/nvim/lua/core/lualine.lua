@@ -1,5 +1,4 @@
-local status_ok, lualine = pcall(require, 'lualine')
-if not status_ok then return end
+local lualine = require('lualine')
 
 local colors = {
     black = '#282828',
@@ -126,3 +125,4 @@ lualine.setup {
         lualine_y = { workspace_diagnostics_component },
     },
 }
+

@@ -90,8 +90,8 @@ upd() {
 
     # update nvim stuff
     command -v nvim &> /dev/null && {
-        upd_announce Updating nvim packer packages
-        nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' || return 1
+        upd_announce Updating vim.pack packages
+        nvim --headless -c 'lua vim.pack.update()' -c 'qa'
         upd_announce done!
         upd_announce Updating nvim mason packages
         nvim --headless -c 'autocmd User MasonUpdateAllComplete quitall' -c 'MasonUpdateAll' || return 1
