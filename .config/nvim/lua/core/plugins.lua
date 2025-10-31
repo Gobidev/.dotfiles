@@ -2,12 +2,12 @@ vim.pack.add({
     -- theme and line
     "https://github.com/gruvbox-community/gruvbox",
     "https://github.com/nvim-lualine/lualine.nvim",
-    -- treesitter
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
     -- lsp
     "https://github.com/neovim/nvim-lspconfig",
     -- mason
     "https://github.com/mason-org/mason.nvim",
+    -- treesitter
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 
     -- blink
     "https://github.com/saghen/blink.download",
@@ -39,7 +39,6 @@ vim.pack.add({
 
 require("mason").setup()
 require("fzf-lua").setup()
-require("nvim-treesitter").setup()
 require("nvim-surround").setup()
 require("luasnip").setup({ enable_autosnippets = true })
 require("neo-tree").setup({})

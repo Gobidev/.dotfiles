@@ -1,4 +1,4 @@
-require("nvim-treesitter").install({"rust", "lua", "yaml", "json"})
+require("nvim-treesitter").install({"rust", "java", "lua", "javascript", "typescript", "yaml", "json", "bash", "c", "diff", "toml", "gitignore", "go", "haskell", "json", "nginx"})
 local already_installed = require("nvim-treesitter.config").get_installed('parsers')
 
 local function ts_start(bufnr, parser_name)
