@@ -71,3 +71,6 @@ vim.keymap.set('n', '<leader>x', '<Cmd>bd<CR>', {
 
 -- lsp
 nnoremap('<leader>lf', vim.lsp.buf.format)
+nnoremap('<leader>la', vim.lsp.buf.code_action) -- todo use pretty format
+nnoremap('<leader>gd', vim.lsp.buf.definition)
+nnoremap('K', vim.lsp.buf.hover)
