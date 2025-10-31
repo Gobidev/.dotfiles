@@ -68,3 +68,6 @@ vim.keymap.set('n', '<leader>x', '<Cmd>bd<CR>', {
   silent = true,
   desc = 'Close current buffer'
 })
+
+-- lsp
+nnoremap('<leader>lf', vim.lsp.buf.format)
