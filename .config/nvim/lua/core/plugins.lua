@@ -6,6 +6,7 @@ vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     -- mason
     "https://github.com/mason-org/mason.nvim",
+    "https://github.com/RubixDev/mason-update-all",
     -- treesitter
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 
@@ -38,6 +39,7 @@ vim.pack.add({
 })
 
 require("mason").setup()
+require("mason-update-all").setup()
 require("fzf-lua").setup()
 require("nvim-surround").setup()
 require("luasnip").setup({ enable_autosnippets = true })
