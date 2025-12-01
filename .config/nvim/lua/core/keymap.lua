@@ -73,6 +73,7 @@ vim.keymap.set('n', '<leader>x', '<Cmd>bd<CR>', {
 nnoremap('<leader>lf', vim.lsp.buf.format)
 nnoremap('<leader>la', vim.lsp.buf.code_action) -- todo use pretty format
 nnoremap('<leader>gd', vim.lsp.buf.definition)
+nnoremap('<leader>lr', vim.lsp.buf.rename)
 nnoremap('[d', function () vim.diagnostic.jump({count = -1, float = true}) end)
 nnoremap(']d', function () vim.diagnostic.jump({count = 1, float = true}) end)
 nnoremap('K', vim.lsp.buf.hover)
