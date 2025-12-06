@@ -14,20 +14,21 @@ vim.pack.add({
     "https://github.com/saghen/blink.download",
     -- completion
     { src = "https://github.com/saghen/blink.cmp", version = "v1.7.0" },
-    -- autopairs
-    { src = "https://github.com/saghen/blink.pairs", version = "v0.3.0" },
 
     -- snippets
     "https://github.com/L3MON4D3/LuaSnip",
     "https://github.com/rafamadriz/friendly-snippets",
+
+    "https://github.com/windwp/nvim-autopairs",
+
     -- better editing
     "https://github.com/kylechui/nvim-surround",
     -- telescope alternative
     "https://github.com/ibhagwan/fzf-lua",
     -- file browser
     {
-    src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
-    version = vim.version.range('3')
+        src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
+        version = vim.version.range('3')
     },
     -- neo-tree dependencies
     "https://github.com/nvim-lua/plenary.nvim",
@@ -35,7 +36,6 @@ vim.pack.add({
     "https://github.com/nvim-tree/nvim-web-devicons",
     -- git
     "https://github.com/lewis6991/gitsigns.nvim",
-
 })
 
 require("mason").setup()
@@ -44,7 +44,15 @@ require("fzf-lua").setup()
 require("nvim-surround").setup()
 require("luasnip").setup({ enable_autosnippets = true })
 require("neo-tree").setup({})
-require("blink.cmp").setup({keymap = {
-  ["<Tab>"] = { "accept", "fallback" },
-}})
-require("blink.pairs").setup({})
+
+require("nvim-autopairs").setup({
+    disable_filetype = { "fzf" },
+})
+
+-- Blink configuration
+require("blink.cmp").setup({
+    keymap = {
+        ["<Tab>"] = { "accept", "fallback" },
+    },
+    completion = { accept = { auto_brackets = { enabled = true } } }
+})
