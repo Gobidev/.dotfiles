@@ -1,8 +1,3 @@
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("stylua")
-
-vim.lsp.enable("ansiblels")
-
 vim.lsp.config.rust_analyzer = {
     settings = {
         ["rust-analyzer"] = {
@@ -13,12 +8,22 @@ vim.lsp.config.rust_analyzer = {
         }
     }
 }
-vim.lsp.enable("rust_analyzer")
 
-vim.lsp.enable('clangd')
-
-vim.lsp.enable('pyright')
-
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls",
+        "ansiblels",
+        "rust_analyzer",
+        "clangd",
+        "pyright",
+        "bashls"
+    },
+    handlers = {
+        function(server_name)
+            require("lspconfig")[server_name].setup({})
+        end,
+    },
+})
 
 vim.diagnostic.config({
     severity = { min = vim.diagnostic.severity.WARN },

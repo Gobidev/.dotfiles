@@ -6,6 +6,7 @@ vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     -- mason
     "https://github.com/mason-org/mason.nvim",
+    "https://github.com/williamboman/mason-lspconfig.nvim",
     "https://github.com/RubixDev/mason-update-all",
     -- treesitter
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
