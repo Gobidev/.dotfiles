@@ -1,2 +1,3 @@
 .config/nvim/plugin
 .config/xournalpp/settings.xml
+.config/nvim/nvim-pack-lock.json
