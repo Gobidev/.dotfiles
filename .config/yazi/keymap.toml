@@ -1,14 +1,14 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "l"
 run  = "plugin smart-enter --- @sync entry"
 desc = "Enter the child directory, or open the file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "q"
 run  = "quit --no-cwd-file"
 desc = "Quit without changing directory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "Q"
 run  = "quit"
 desc = "Quit and change directory"
