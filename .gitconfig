@@ -5,14 +5,6 @@
 
 [core]
 	editor = nvim
-    pager = delta
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-    navigate = true
-    dark = true
-[merge]
-    conflictstyle = zdiff3
 [push]
     autoSetupRemote = true
 
@@ -26,3 +18,16 @@
     gpgSign = true
 [rebase]
 	autoStash = true
+
+[sendemail]
+    smtpserver = mail.rwth-aachen.de
+    smtpuser = uc570011@rwth-aachen.de
+    smtpencryption = tls
+    smtpserverport = 587
+    suppressCc = all
+    confirm = always
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
