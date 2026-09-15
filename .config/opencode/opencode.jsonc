@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/deepseek-v4-flash-vision-exp",
+  "small_model": "opencode-go/ox-alpha-free",
+  "agent": {
+    "pro": {
+      "description": "DeepSeek V4 Pro: escalate when the default model fails on hard reasoning/coding",
+      "mode": "all",
+      "model": "opencode-go/deepseek-v4-pro"
+    },
+    "expert": {
+      "description": "Kimi K2.7 Code: coding-focused expert for expert-level coding work",
+      "mode": "all",
+      "model": "opencode-go/kimi-k2.7-code"
+    },
+    "multimodal": {
+      "description": "GLM 5.3 Flash: natively multimodal for image/video tasks",
+      "mode": "all",
+      "model": "opencode-go/glm-5.3-flash"
+    }
+  }
+}

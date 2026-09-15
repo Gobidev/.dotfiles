@@ -124,6 +124,8 @@ install_file .config/lf
 install_file .config/joshuto
 install_file .config/yazi
 install_file .config/nvim
+install_file .config/opencode/opencode.jsonc
+install_file .config/opencode/tui.json
 
 install_file .config/spicetify/Themes
 
