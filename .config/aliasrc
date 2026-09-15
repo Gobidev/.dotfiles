@@ -7,6 +7,7 @@ alias mv="mv -iv"                                   # ask before overwrite and v
 alias rm="rm -v"                                    # verbose output for rm
 alias ip="ip -c"                                    # enable colors for ip
 alias srm="shred -u -n 1"                           # shred and deallocate file
+alias oc="opencode"                                 # opencode quick launch
 # use eza/exa instead of ls if installed
 if command -v eza > /dev/null; then
     alias l='eza -lahg --icons --octal-permissions --git'
