@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # script to automatically install dotfiles, should be run from project root
 # based on https://github.com/RubixDev/.dotfiles/blob/main/install.sh
@@ -77,7 +78,16 @@ install_file () {
     mkdir -p "$(dirname "$dest")"
     
     [ ! -L "$dest" ] || rm "$dest"  # if destination is symlink, delete it
-    [ ! -e "$dest" ] || mv "$dest" "$dest".old  # if destination is file, create backup
+    # if destination is file, create backup without clobbering existing backups
+    if [ -e "$dest" ]; then
+        backup="$dest.old"
+        n=1
+        while [ -e "$backup" ]; do
+            backup="$dest.old.$n"
+            n=$((n + 1))
+        done
+        mv "$dest" "$backup"
+    fi
     
     # create symlink
     echo "Linking '$PWD/$src' to '$dest'"
@@ -114,7 +124,6 @@ install_file .config/lf
 install_file .config/joshuto
 install_file .config/yazi
 install_file .config/nvim
-install_file .config/helix
 
 install_file .config/spicetify/Themes
 
