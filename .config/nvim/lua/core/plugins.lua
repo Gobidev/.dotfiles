@@ -16,8 +16,14 @@ vim.pack.add({
     "https://github.com/gruvbox-community/gruvbox",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/linrongbin16/lsp-progress.nvim",
+    -- notifications
+    "https://github.com/rcarriga/nvim-notify",
+    -- navigation
+    "https://github.com/folke/flash.nvim",
     -- lsp
     "https://github.com/neovim/nvim-lspconfig",
+    -- diagnostics / symbols panel
+    "https://github.com/folke/trouble.nvim",
     -- mason
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/williamboman/mason-lspconfig.nvim",
@@ -27,6 +33,9 @@ vim.pack.add({
     "https://github.com/stevearc/conform.nvim",
     -- treesitter
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+    "https://github.com/nvim-treesitter/nvim-treesitter-context",
+    -- rust
+    "https://github.com/mrcjkb/rustaceanvim",
 
     -- blink
     "https://github.com/saghen/blink.download",
@@ -46,6 +55,12 @@ vim.pack.add({
     "https://github.com/MunifTanjim/nui.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
 })
+
+-- Notifications
+require("notify").setup({
+    background_colour = "#282828",
+})
+vim.notify = require("notify")
 
 require("mason").setup()
 require("mason-update-all").setup()
@@ -79,6 +94,18 @@ require("conform").setup({
 require("lsp-progress").setup()
 require("nvim-surround").setup()
 require("luasnip").setup({ enable_autosnippets = true })
+
+-- Navigation
+require("flash").setup({})
+
+-- Treesitter context header
+require("treesitter-context").setup({
+    max_lines = 3,
+    multiline_threshold = 1,
+})
+
+-- Diagnostics / symbols panel
+require("trouble").setup({})
 
 require("nvim-autopairs").setup({
     disable_filetype = { "fzf" },

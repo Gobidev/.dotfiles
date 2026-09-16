@@ -20,6 +20,23 @@ map("n", "<leader>fw", function()
     vim.cmd("FzfLua live_grep")
 end, "Live grep")
 
+-- Flash
+map({ "n", "x", "o" }, "s", function()
+    require("flash").jump()
+end, "Flash jump")
+map({ "n", "x", "o" }, "S", function()
+    require("flash").treesitter()
+end, "Flash treesitter")
+map("o", "r", function()
+    require("flash").remote()
+end, "Remote flash")
+map({ "o", "x" }, "R", function()
+    require("flash").treesitter_search()
+end, "Treesitter search")
+map("c", "<C-s>", function()
+    require("flash").toggle()
+end, "Toggle flash search")
+
 -- Centered jumping
 local centered = {
     n = "nzz",
@@ -73,3 +90,10 @@ end, "Previous diagnostic")
 map("n", "]d", function()
     vim.diagnostic.jump({ count = 1, float = true })
 end, "Next diagnostic")
+
+-- Trouble
+map("n", "<leader>td", "<cmd>Trouble diagnostics toggle<CR>", "Diagnostics")
+map("n", "<leader>tD", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", "Buffer diagnostics")
+map("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<CR>", "Symbols")
+map("n", "<leader>tl", "<cmd>Trouble lsp toggle focus=false win.position=right<CR>", "LSP definitions/references")
+map("n", "<leader>tq", "<cmd>Trouble qflist toggle<CR>", "Quickfix")

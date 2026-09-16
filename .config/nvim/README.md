@@ -16,6 +16,8 @@ the lockfile).
   `gitsigns`). Their lockfile entries still install them on a fresh machine.
 - `after/lsp/<server>.lua` — per-server LSP configuration, merged on top of the
   definitions shipped by `nvim-lspconfig`.
+- Rust is handled by `rustaceanvim` (configured via `vim.g.rustaceanvim` in
+  `lua/core/lsp.lua`); `rust_analyzer` is excluded from `mason-lspconfig`.
 
 ## Formatting
 `conform.nvim` drives formatting (`<leader>lf`, LSP fallback for servers like
