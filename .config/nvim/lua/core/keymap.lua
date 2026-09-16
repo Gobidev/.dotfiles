@@ -1,79 +1,75 @@
--- functions for easier keybinds, todo: use descriptive format like for neotree toggle
-local function bind(op, outer_opts)
-    outer_opts = outer_opts or { noremap = true }
-    return function(lhs, rhs, opts)
-        opts = vim.tbl_extend('force', outer_opts, opts or {})
-        vim.keymap.set(op, lhs, rhs, opts)
-    end
+local map = function(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
 end
 
-local nmap = bind('n', { noremap = false })
-local nnoremap = bind('n')
-local vnoremap = bind('v')
-local xnoremap = bind('x')
-local inoremap = bind('i')
+local lazy = require("core.lazy")
 
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
--- Simple keybind to toggle Neo-tree
-vim.keymap.set('n', '<leader>e', '<Cmd>Neotree<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Toggle Neo-tree file explorer'
-})
+-- File explorer
+map("n", "<leader>e", function()
+    lazy.neo_tree()
+    vim.cmd("Neotree")
+end, "Toggle Neo-tree file explorer")
 
 -- fzf-lua
-nnoremap('<leader>ff', '<Cmd>FzfLua files<CR>')
-nnoremap('<leader>fw', '<Cmd>FzfLua live_grep<CR>')
+map("n", "<leader>ff", function()
+    lazy.fzf_lua()
+    vim.cmd("FzfLua files")
+end, "Find files")
+map("n", "<leader>fw", function()
+    lazy.fzf_lua()
+    vim.cmd("FzfLua live_grep")
+end, "Live grep")
 
--- centered jumping
-nnoremap('n', 'nzz')
-nnoremap('N', 'Nzz')
-nnoremap('*', '*zz')
-nnoremap('#', '#zz')
-nnoremap('n', 'nzz')
-nnoremap('g*', 'g*zz')
-nnoremap('<C-d>', '<C-d>zz')
-nnoremap('<C-u>', '<C-u>zz')
+-- Centered jumping
+local centered = {
+    n = "nzz",
+    N = "Nzz",
+    ["*"] = "*zz",
+    ["#"] = "#zz",
+    ["g*"] = "g*zz",
+    ["<C-d>"] = "<C-d>zz",
+    ["<C-u>"] = "<C-u>zz",
+}
+for lhs, rhs in pairs(centered) do
+    map("n", lhs, rhs, "Jump and center")
+end
 
--- stop searching
-nnoremap('<leader>h', '<cmd>:nohlsearch<CR>')
-vnoremap('<leader>h', '<cmd>:nohlsearch<CR>')
+-- Stop searching
+map("n", "<leader>h", "<cmd>nohlsearch<CR>", "Clear search highlight")
+map("v", "<leader>h", "<cmd>nohlsearch<CR>", "Clear search highlight")
 
--- quick save and quit
-nnoremap('<leader>w', '<cmd>:w<CR>')
-nnoremap('<leader>q', '<cmd>:q<CR>')
+-- Quick save and quit
+map("n", "<leader>w", "<cmd>w<CR>", "Save buffer")
+map("n", "<leader>q", "<cmd>q<CR>", "Quit window")
 
--- delete without yanking
-nnoremap('<leader>d', '"_d')
-nnoremap('<leader>c', '"_c')
-nnoremap('<leader>D', '"_D')
-nnoremap('<leader>C', '"_C')
+-- Delete without yanking
+map("n", "<leader>d", '"_d', "Delete without yanking")
+map("n", "<leader>c", '"_c', "Change without yanking")
+map("n", "<leader>D", '"_D', "Delete to end of line without yanking")
+map("n", "<leader>C", '"_C', "Change to end of line without yanking")
 
--- splits
-nnoremap('<C-w>H', '<cmd>:top vs<CR>')
-nnoremap('<C-w>J', '<cmd>:bot sp<CR>')
-nnoremap('<C-w>K', '<cmd>:top sp<CR>')
-nnoremap('<C-w>L', '<cmd>:bot vs<CR>')
+-- Splits
+map("n", "<C-w>H", "<cmd>top vs<CR>", "Split left")
+map("n", "<C-w>J", "<cmd>bot sp<CR>", "Split below")
+map("n", "<C-w>K", "<cmd>top sp<CR>", "Split above")
+map("n", "<C-w>L", "<cmd>bot vs<CR>", "Split right")
 
 -- Navigate buffers
-keymap('n', '<S-l>', ':bnext<CR>', opts)
-keymap('n', '<S-h>', ':bprevious<CR>', opts)
+map("n", "<S-l>", "<cmd>bnext<CR>", "Next buffer")
+map("n", "<S-h>", "<cmd>bprevious<CR>", "Previous buffer")
+map("n", "<leader>x", "<cmd>bd<CR>", "Close current buffer")
 
-vim.keymap.set('n', '<leader>x', '<Cmd>bd<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Close current buffer'
-})
-
--- lsp
-nnoremap('<leader>lf', vim.lsp.buf.format)
-nnoremap('<leader>la', vim.lsp.buf.code_action) -- todo use pretty format
-nnoremap('<leader>gd', vim.lsp.buf.definition)
-nnoremap('<leader>lr', vim.lsp.buf.rename)
-nnoremap('[d', function () vim.diagnostic.jump({count = -1, float = true}) end)
-nnoremap(']d', function () vim.diagnostic.jump({count = 1, float = true}) end)
-nnoremap('K', vim.lsp.buf.hover)
+-- LSP
+map("n", "<leader>lf", function()
+    require("conform").format({ async = true, lsp_format = "fallback" })
+end, "Format buffer")
+map("n", "<leader>la", vim.lsp.buf.code_action, "Code action")
+map("n", "<leader>gd", vim.lsp.buf.definition, "Go to definition")
+map("n", "<leader>lr", vim.lsp.buf.rename, "Rename symbol")
+map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+map("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, "Previous diagnostic")
+map("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, "Next diagnostic")

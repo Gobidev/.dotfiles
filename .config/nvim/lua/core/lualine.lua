@@ -77,10 +77,6 @@ local diagnostics_component = {
     -- end,
 }
 
-local workspace_diagnostics_component = vim.tbl_deep_extend('force', diagnostics_component, {
-    sources = { 'nvim_workspace_diagnostic' },
-})
-
 local filename_component = {
     'filename',
     newfile_status = true,
@@ -122,7 +118,7 @@ lualine.setup {
     },
     tabline = {
         lualine_a = { buffers_component },
-        lualine_y = { workspace_diagnostics_component },
+        lualine_y = { diagnostics_component },
     },
 }
 

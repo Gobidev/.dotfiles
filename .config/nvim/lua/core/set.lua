@@ -24,7 +24,7 @@ vim.opt.showbreak = '↪'
 vim.opt.scrolloff = 8
 
 -- preserve undo history
-vim.bo.undofile = true
+vim.opt.undofile = true
 
 -- enable mouse support
 vim.opt.mouse = 'a'
@@ -40,4 +40,10 @@ vim.opt.colorcolumn = '120'
 -- disable mode display because it is handled by lualine
 vim.opt.showmode = false
 
-vim.cmd([[au BufRead *.yaml,*.yml | set ft=yaml.ansible]])
+-- treat every yaml file as an ansible file
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "yaml",
+    callback = function()
+        vim.bo.filetype = "yaml.ansible"
+    end,
+})

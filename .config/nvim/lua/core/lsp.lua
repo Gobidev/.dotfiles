@@ -1,14 +1,11 @@
-vim.lsp.config.rust_analyzer = {
-    settings = {
-        ["rust-analyzer"] = {
-            checkOnSave = true,
-            check = {
-                command = "clippy"
-            }
-        }
-    }
-}
+-- Shared settings applied to every server
+vim.lsp.config("*", {
+    capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
+-- Per-server configuration lives in `after/lsp/<server>.lua`
+
+-- mason-lspconfig automatically enables installed servers via `vim.lsp.enable()`
 require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
@@ -16,13 +13,9 @@ require("mason-lspconfig").setup({
         "rust_analyzer",
         "clangd",
         "pyright",
-        "bashls"
+        "bashls",
     },
-    handlers = {
-        function(server_name)
-            require("lspconfig")[server_name].setup({})
-        end,
-    },
+    automatic_enable = true,
 })
 
 vim.diagnostic.config({
