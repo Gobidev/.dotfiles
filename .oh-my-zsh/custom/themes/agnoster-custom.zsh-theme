@@ -31,12 +31,17 @@
 
 typeset -aHg AGNOSTER_PROMPT_SEGMENTS=(
     prompt_status
+    prompt_duration
     prompt_context
     prompt_virtualenv
     prompt_dir
     prompt_git
     prompt_end
 )
+
+# Last command runtime in whole seconds; integer typed so float results are
+# truncated (avoids scientific-notation artifacts for sub-second durations)
+typeset -gi COMMAND_DURATION=0
 
 ### Segment drawing
 # A few utility functions to make it easy and re-usable to draw segmented prompts
@@ -143,6 +148,25 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment $PRIMARY_FG default " $symbols "
 }
 
+# Duration: how long the last command took to run, hidden for fast commands
+prompt_duration() {
+  # minimum runtime in seconds before the duration is shown
+  local threshold=${PROMPT_DURATION_MIN:-2}
+  [[ -z $COMMAND_DURATION ]] && return
+  (( COMMAND_DURATION < threshold )) && return
+
+  local duration
+  if (( COMMAND_DURATION < 60 )); then
+    duration="${COMMAND_DURATION}s"
+  elif (( COMMAND_DURATION < 3600 )); then
+    duration="$(( COMMAND_DURATION / 60 ))m$(( COMMAND_DURATION % 60 ))s"
+  else
+    duration="$(( COMMAND_DURATION / 3600 ))h$(( (COMMAND_DURATION % 3600) / 60 ))m"
+  fi
+
+  prompt_segment $PRIMARY_FG 244 " $duration "
+}
+
 # Display current virtual environment
 prompt_virtualenv() {
   if [[ -n $VIRTUAL_ENV ]]; then
@@ -162,16 +186,30 @@ prompt_agnoster_main() {
 }
 
 prompt_agnoster_precmd() {
+  if [[ -n $COMMAND_DURATION_START ]]; then
+    COMMAND_DURATION=$(( EPOCHREALTIME - COMMAND_DURATION_START ))
+    unset COMMAND_DURATION_START
+  else
+    COMMAND_DURATION=0
+  fi
+
   vcs_info
   PROMPT='%{%f%b%k%}$(prompt_agnoster_main) '
+}
+
+# record the start time of each command so its duration can be shown
+prompt_agnoster_preexec() {
+  COMMAND_DURATION_START=$EPOCHREALTIME
 }
 
 prompt_agnoster_setup() {
   autoload -Uz add-zsh-hook
   autoload -Uz vcs_info
+  zmodload -F zsh/datetime p:EPOCHREALTIME
 
   prompt_opts=(cr subst percent)
 
+  add-zsh-hook preexec prompt_agnoster_preexec
   add-zsh-hook precmd prompt_agnoster_precmd
 
   zstyle ':vcs_info:*' enable git
